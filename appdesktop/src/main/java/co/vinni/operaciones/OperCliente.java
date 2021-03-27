@@ -41,6 +41,8 @@ public class OperCliente implements Operaciones<Cliente>{
                 
             } catch (SQLException ex) {
                 ;
+            }finally{
+                cons.desconectase(cnactiva);
             }
            
             
