@@ -37,6 +37,8 @@ public class ImpOperacionesCliente implements OperacionesCliente{
                 
             } catch (SQLException ex) {
                 Logger.getLogger(ImpOperacionesCliente.class.getName()).log(Level.SEVERE, null, ex);
+            }finally{
+                cons.desconectase(cnactiva);
             }
            
             
