@@ -2,41 +2,84 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui">
     <h:head>
         <title>Ejemplo de Simulador</title>
     </h:head>
     <h:body>
-        
-        <h:form>
-            <br/>
-            <span class="ui-float-label">
-                <p:inputText id="nombre" value="#{beanSimulador.nombre}"/>
-                <p:outputLabel for="@previous" value="Nombre"/>
-            </span>
-            <br/>
-            <span class="ui-float-label">
-                <p:inputText id="fecha" value="#{beanSimulador.fecha}"/>
-                <p:outputLabel for="@previous" value="Fecha"/>
-            </span>
-            <br/>
-            <span class="ui-float-label">
-                <p:inputText id="valor" value="#{beanSimulador.valor}"/>
-                <p:outputLabel for="@previous" value="valor"/>
-            </span>
-            <br/>
-            <span class="ui-float-label">
-                <p:inputText id="plazo" value="#{beanSimulador.plazo}"/>
-                <p:outputLabel for="@previous" value="plazo"/>
-            </span>
-            <br/>
-            <span class="ui-float-label">
-                <p:inputText id="cuota" value="#{beanSimulador.cuota}"/>
-                <p:outputLabel for="@previous" value="cuota"/>
-            </span>
-            <br/>
-            <p:button value="Calcular" onclick="#{beanSimulador.calcular()}" />
-        </h:form>
+        <b:container fluid="false">
+            <b:panel title="Ventana de datos" look="primary">
+                <h:form>
+                    <br/>
+                    <span class="ui-float-label">
+                        <p:inputText id="nombre" value="#{beanSimulador.nombre}"/>
+                        <p:outputLabel for="@previous" value="Nombre"/>
+                    </span>
+                    <br/>
+                    <span class="ui-float-label">
+                        <p:datePicker id="basic" value="#{beanSimulador.fechaD}" yearNavigator="true" monthNavigator="false" />
+                        <p:outputLabel for="@previous" value="Fecha"/>
+                        
+                    </span>
+                    <br/>
+                    <span class="ui-float-label">
+                        <p:inputText id="valor" value="#{beanSimulador.valor}"/>
+                        <p:outputLabel for="@previous" value="valor"/>
+                    </span>
+                    <br/>
+                    <span class="ui-float-label">
+                        <p:inputText id="plazo" value="#{beanSimulador.plazo}"/>
+                        <p:outputLabel for="@previous" value="plazo"/>
+                    </span>
+                    <br/>
+                    <span class="ui-float-label">
+                        <p:inputText id="cuota" value="#{beanSimulador.cuota}"/>
+                        <p:outputLabel for="@previous" value="cuota"/>
+                    </span>
+                    <br/>
+                    <p:commandButton value="Calcular" action="#{beanSimulador.calcular()}" update="cuota"/>
+
+                </h:form>
+            </b:panel>
+        </b:container>
+        <b:container fluid="true">
+            <b:panel title="Autenticación" look="primary">
+                <h:form>
+                    <b:row>
+                        <b:column medium-screen="2">
+                            <h:outputText value="Usuario"/>
+                        </b:column>
+                        <b:column medium-screen="4">
+                            <b:inputText placeholder="Usuario" />
+                        </b:column>
+                        <b:column medium-screen="6">
+                            <b:message/>
+                        </b:column>
+                    </b:row>
+                    <b:row>
+                        <b:column medium-screen="2">
+                            <h:outputText value="Clave" />
+                        </b:column>
+                        <b:column medium-screen="4">
+                            <b:inputSecret placeholder="Clave" />
+                        </b:column>
+                        <b:column medium-screen="6">
+                            <b:message />
+                        </b:column>
+                    </b:row>
+                    <b:row>
+                        <b:column span="2" offset="2">
+                            <b:commandButton value="Ingresar" look="primary" style="width:100%" />
+                        </b:column>
+                        <b:column span="2">
+                            <b:commandButton value="Olvido Clave" look="danger" style="width:100%" />
+                        </b:column>
+                    </b:row>
+                </h:form>
+            </b:panel>
+        </b:container>
     </h:body>
 </html>
 

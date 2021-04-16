@@ -6,11 +6,12 @@
 package web;
 
 import dao.Cliente;
+import java.io.Serializable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.faces.bean.ViewScoped;
 import logica.Prestamo;
 
 /**
@@ -18,11 +19,12 @@ import logica.Prestamo;
  * @author Vinni
  */
 @ManagedBean
-@RequestScoped
-public class BeanSimulador {
+@ViewScoped
+public class BeanSimulador implements Serializable{
 
     private String nombre;
     private String fecha;
+    private Date fechaD;
     private String valor;
     private String plazo;
     private String cuota;
@@ -74,6 +76,14 @@ public class BeanSimulador {
         this.cuota = cuota;
     }
 
+    public Date getFechaD() {
+        return fechaD;
+    }
+
+    public void setFechaD(Date fechaD) {
+        this.fechaD = fechaD;
+    }
+
     
 
     public void calcular() {
@@ -102,6 +112,6 @@ public class BeanSimulador {
         }else{
             this.cuota = "" ;
         }
-        System.out.println(""+this.cuota);
+        System.out.println("- - -"+this.cuota);
     }
 }
